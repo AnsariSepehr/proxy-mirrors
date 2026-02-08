@@ -1,0 +1,39 @@
+
+---
+
+### `.gitignore` File
+
+Create a file named `.gitignore` in your repository root and paste this:
+
+```gitignore
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Environment / secrets (never commit these)
+.env
+.env.local
+.env.*.local
+
+# Node / build artifacts (if you ever add any)
+node_modules/
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+
+# Don't commit real personal data
+# (You can remove this line if you want)
+personal-info.txt
