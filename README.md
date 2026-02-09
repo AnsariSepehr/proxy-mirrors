@@ -32,7 +32,7 @@ Live Demo: [https://nexus.son.ir/mirrors/](https://nexus.son.ir/mirrors/)
 
 ## Deployment
 
-See the full deployment guide in the [docs](./docs/DEPLOYMENT.md) folder.
+See the full deployment guide in the [docs](./docs/deployment.md) folder.
 
 ## Author
 
