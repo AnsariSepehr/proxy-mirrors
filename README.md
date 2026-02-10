@@ -34,7 +34,7 @@ Live on:https://nexus.son.ir/mirrors
 *   **Visual Feedback** - Toast notifications for successful copy actions
     
 
-### 💻 Technical Features
+###  Technical Features
 
 *   **Client-side Rendering** - No server-side dependencies required
     
