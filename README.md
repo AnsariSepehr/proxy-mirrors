@@ -177,17 +177,18 @@ The application uses CSS custom properties for theming. Modify the color scheme 
 
 ### Development Package Managers
 
-Mirror	Description	Configuration Type
-Composer	PHP package manager	composer.json
-Maven	Java build tool	settings.xml / pom.xml
-NPM	Node.js package manager	npm config
-NuGet	.NET package manager	dotnet CLI
-PyPI	Python package index	pip.conf
-Docker	Container registry	daemon.json
+- Composer	| PHP package manager	| composer.json
+- Maven	| Java build tool	| settings.xml / pom.xml
+- NPM	| Node.js package manager	| npm config
+- NuGet	| .NET package manager	| dotnet CLI
+- PyPI	| Python package index	| pip.conf
+- Docker	| Container registry	| daemon.json
 
 ### Linux Distributions
 
-DistributionVersionsPackage Manager**Alpine Linux**Various branchesapk**Rocky Linux**BaseOS, AppStream, EPEL, Extrasdnf/yum**Ubuntu**24.04 (Noble)apt
+- Alpine Linux	| Various branches	| apk
+- Rocky Linux	| BaseOS, AppStream, EPEL, Extras	| dnf/yum
+- Ubuntu |	24.04 (Noble)	| apt
 
 📱 Browser Support
 ------------------
