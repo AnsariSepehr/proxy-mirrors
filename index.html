@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Proxy Mirrors</title>
+    <title>Proxy Mirrors Catalog</title>
     <style>
         :root {
-            /* Dark theme (default) */
             --bg: #0d1117;
             --card-bg: #161b22;
             --card-hover: #1f252d;
@@ -14,13 +13,14 @@
             --text: #c9d1d9;
             --text-secondary: #8b949e;
             --accent: #ff9f1c;
+            --accent-dark: #cc7a00;
             --border: #30363d;
             --code-bg: #0d1117;
             --brand-color: #ff9f1c;
             --detail-title: #ff9f1c;
+            --success-color: #28a745;
             --gradient-top: linear-gradient(to bottom, rgba(255, 159, 28, 0.25), rgba(255, 159, 28, 0));
         }
-
         [data-theme="light"] {
             --bg: #f8f8f8;
             --card-bg: #ffffff;
@@ -29,13 +29,14 @@
             --text: #24292e;
             --text-secondary: #57606a;
             --accent: #ff9f1c;
+            --accent-dark: #cc7a00;
             --border: #d0d7de;
             --code-bg: #eaeaea;
             --brand-color: #ff9f1c;
             --detail-title: #ff9f1c;
+            --success-color: #28a745;
             --gradient-top: linear-gradient(to bottom, rgba(255, 159, 28, 0.25), rgba(255, 159, 28, 0));
         }
-
         body {
             background-color: var(--bg);
             color: var(--text);
@@ -44,7 +45,6 @@
             padding: 0;
             line-height: 1.6;
         }
-
         .container {
             max-width: 1600px;
             margin: 0 auto;
@@ -53,7 +53,6 @@
             justify-content: center;
             gap: 80px;
         }
-
         .main-content {
             flex: 1;
             max-width: 900px;
@@ -61,7 +60,6 @@
             flex-direction: column;
             align-items: center;
         }
-
         .right-panel {
             width: 460px;
             background: var(--gradient-top);
@@ -75,7 +73,6 @@
             flex-shrink: 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-
         .panel-close {
             position: absolute;
             top: 16px;
@@ -85,11 +82,9 @@
             color: var(--text-secondary);
             transition: color 0.3s ease;
         }
-
         .panel-close:hover {
             color: var(--text);
         }
-
         .header {
             width: 100%;
             display: flex;
@@ -97,28 +92,23 @@
             align-items: flex-start;
             margin-bottom: 30px;
         }
-
         .header-left {
             text-align: left;
         }
-
         h1 {
             font-size: 1.8rem;
             margin: 0;
             color: var(--text);
         }
-
         .brand {
             color: var(--brand-color);
             font-weight: bold;
         }
-
         .subtitle {
             color: var(--text-secondary);
             font-size: 0.95rem;
             margin-top: 6px;
         }
-
         .theme-toggle {
             background: none;
             border: none;
@@ -126,13 +116,11 @@
             cursor: pointer;
             color: var(--text-secondary);
         }
-
         .search-bar {
             width: 100%;
             max-width: 600px;
             margin: 30px 0 50px;
         }
-
         .search-bar input {
             width: 100%;
             padding: 12px 20px;
@@ -142,12 +130,10 @@
             color: var(--text);
             font-size: 0.95rem;
         }
-
         section {
             width: 100%;
             margin-bottom: 60px;
         }
-
         h2 {
             font-size: 1.4rem;
             margin-bottom: 20px;
@@ -156,7 +142,6 @@
             border-bottom: 1px solid var(--border);
             padding-bottom: 10px;
         }
-
         .cards-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -164,7 +149,6 @@
             justify-content: center;
             width: 100%;
         }
-
         .card {
             display: flex;
             align-items: center;
@@ -179,7 +163,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .card::before {
             content: '';
             position: absolute;
@@ -190,58 +173,49 @@
             transform: translate(-100%, -100%);
             transition: transform 0.6s ease, opacity 0.3s ease;
         }
-
         .card:hover::before {
             opacity: 1;
             transform: translate(100%, 100%);
         }
-
         .card:hover {
             background: var(--card-hover);
             border-color: var(--accent);
             transform: rotate(2deg);
         }
-
         .card.active {
             background: var(--card-active);
             border-color: var(--brand-color);
         }
-
         .card-logo {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             flex-shrink: 0;
+            object-fit: contain;
         }
-
         .card-title {
             font-size: 1.05rem;
             color: var(--text);
         }
-
         .card.active .card-title {
             color: var(--brand-color);
             font-weight: 600;
         }
-
-        /* Detail panel */
         .detail-logo {
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 24px;
+            max-width: 80%;
+            height: auto;
+            margin: 0 auto 30px;
             display: block;
+            object-fit: contain;
         }
-
         .detail-title {
             font-size: 1.6rem;
             text-align: center;
             color: var(--detail-title);
             margin-bottom: 15px;
         }
-
         .detail-url-wrapper {
             margin-bottom: 40px;
         }
-
         .detail-url {
             background: var(--code-bg);
             padding: 16px 20px;
@@ -251,34 +225,33 @@
             white-space: pre;
             overflow-x: auto;
         }
-
         .copy-url-wrapper {
             text-align: right;
             margin-top: 8px;
         }
-
-        .copy-url-btn {
-            background: #ff9f1c;
-            color: white;
+        .copy-url-btn,
+        .detail-content .copy-btn {
+            background: transparent;
+            border: 2px solid var(--accent-dark);
+            color: var(--accent);
             padding: 8px 16px;
             border-radius: 8px;
-            transition: filter 0.3s ease;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
         }
-
-        .copy-url-btn:hover {
-            filter: brightness(1.2);
+        .copy-url-btn:hover,
+        .detail-content .copy-btn:hover {
+            background: var(--accent);
+            color: white;
         }
-
         .detail-content p {
             margin: 20px 0 10px;
             font-size: 1rem;
             text-align: left;
         }
-
         .code-block {
             margin: 20px 0;
         }
-
         .detail-content pre {
             background: var(--code-bg);
             padding: 16px 20px;
@@ -289,23 +262,9 @@
             margin: 0 0 8px 0;
             white-space: pre;
         }
-
         .copy-block-wrapper {
             text-align: right;
         }
-
-        .detail-content .copy-btn {
-            background: #ff9f1c;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: filter 0.3s ease;
-        }
-
-        .detail-content .copy-btn:hover {
-            filter: brightness(1.2);
-        }
-
         .back-link {
             display: block;
             text-align: center;
@@ -313,71 +272,96 @@
             color: var(--accent);
             font-size: 1rem;
         }
-
-        /* Behind the Scenes */
         .behind-scenes .cards-row {
             justify-content: center;
         }
-
         .small-bat {
             text-align: center;
             margin: 80px 0 40px;
         }
-
         .small-bat img {
-            width: 60px;
+            width: 50px;
             height: auto;
         }
-
-        /* Contributor profile styles */
         .contributor-role {
             font-size: 0.95rem;
             color: var(--text-secondary);
             margin: 8px 0 20px;
         }
-
         .contributor-separator {
             border: none;
             border-top: 1px solid var(--border);
             margin: 20px auto 25px;
             width: 100%;
         }
-
         .contributor-links {
             display: flex;
             flex-direction: column;
             gap: 20px;
             align-items: flex-start;
         }
-
         .link-item {
             display: flex;
             align-items: center;
             gap: 12px;
             font-size: 1rem;
         }
-
         .link-icon {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
         }
-
         .contributor-links a {
             color: var(--brand-color) !important;
             text-decoration: none;
         }
-
         .contributor-links a:visited {
             color: var(--brand-color) !important;
         }
-
         .repo-separator {
             border: none;
             border-top: 1px solid var(--border);
             margin: 10px 0;
             width: 100%;
         }
-
+        /* Toast notification - outlined success style */
+        #toast {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            max-width: 380px;
+            padding: 16px 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--success-color);
+            border-radius: 12px;
+            color: var(--success-color);
+            font-size: 1rem;
+            font-weight: 500;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transform: translateX(120%);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            z-index: 1000;
+        }
+        #toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .toast-check {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid var(--success-color);
+            color: var(--success-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
         @media (max-width: 1300px) {
             .container {
                 flex-direction: column;
@@ -390,7 +374,6 @@
                 position: static;
             }
         }
-
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
@@ -403,6 +386,11 @@
             .cards-row {
                 grid-template-columns: 1fr;
             }
+            #toast {
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+            }
         }
     </style>
 </head>
@@ -411,77 +399,74 @@
         <div class="main-content">
             <header class="header">
                 <div class="header-left">
-                    <h1><span class="brand">Your</span> Proxy Mirrors</h1>
-                    <p class="subtitle">Fast and reliable mirrors</p>
+                    <h1><span class="brand">Proxy</span> Mirrors Catalog</h1>
+                    <p class="subtitle">Example implementation of a proxy mirrors directory</p>
                 </div>
                 <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme"></button>
             </header>
-
             <div class="search-bar">
                 <input type="text" placeholder="Search mirrors..." id="searchInput">
             </div>
-
             <section id="development">
                 <h2>Development Mirrors</h2>
                 <div class="cards-row">
                     <div class="card" data-mirror="composer">
-                        <img src="https://cdn.simpleicons.org/composer/885630" alt="Composer" class="card-logo">
+                        <img src="svg/composer-logo.svg" alt="Composer" class="card-logo">
                         <div class="card-title">Composer</div>
                     </div>
                     <div class="card" data-mirror="maven">
-                        <img src="https://cdn.simpleicons.org/apachemaven/ed8b00" alt="Maven" class="card-logo">
+                        <img src="svg/maven-logo.svg" alt="Maven" class="card-logo">
                         <div class="card-title">Maven</div>
                     </div>
                     <div class="card" data-mirror="npm">
-                        <img src="https://cdn.simpleicons.org/npm/cb3837" alt="NPM" class="card-logo">
+                        <img src="svg/npm-logo.svg" alt="NPM" class="card-logo">
                         <div class="card-title">NPM</div>
                     </div>
                     <div class="card" data-mirror="nuget">
-                        <img src="https://cdn.simpleicons.org/nuget/004880" alt="NuGet" class="card-logo">
+                        <img src="svg/nuget-logo.svg" alt="NuGet" class="card-logo">
                         <div class="card-title">NuGet</div>
                     </div>
                     <div class="card" data-mirror="pypi">
-                        <img src="https://cdn.simpleicons.org/python/3776ab" alt="PyPI" class="card-logo">
+                        <img src="svg/pypi-logo.svg" alt="PyPI" class="card-logo">
                         <div class="card-title">PyPI</div>
+                    </div>
+                    <div class="card" data-mirror="docker">
+                        <img src="svg/docker-logo.svg" alt="Docker" class="card-logo">
+                        <div class="card-title">Docker</div>
                     </div>
                 </div>
             </section>
-
             <section id="linux">
                 <h2>Linux Distribution Mirrors</h2>
                 <div class="cards-row">
                     <div class="card" data-mirror="alpine">
-                        <img src="https://cdn.simpleicons.org/alpinelinux/0d597f" alt="Alpine Linux" class="card-logo">
+                        <img src="svg/alpine-logo.svg" alt="Alpine Linux" class="card-logo">
                         <div class="card-title">Alpine Linux</div>
                     </div>
                     <div class="card" data-mirror="rocky">
-                        <img src="https://cdn.simpleicons.org/rockylinux/8bc53f" alt="Rocky Linux" class="card-logo">
+                        <img src="svg/rocky-logo.svg" alt="Rocky Linux" class="card-logo">
                         <div class="card-title">Rocky Linux</div>
                     </div>
                     <div class="card" data-mirror="ubuntu">
-                        <img src="https://cdn.simpleicons.org/ubuntu/e95420" alt="Ubuntu" class="card-logo">
+                        <img src="svg/ubuntu-logo.svg" alt="Ubuntu" class="card-logo">
                         <div class="card-title">Ubuntu</div>
                     </div>
                 </div>
             </section>
-
             <section class="behind-scenes">
                 <h2>Behind The Scenes</h2>
                 <div class="cards-row">
-                    <div class="card" data-mirror="maintainer">
-                        <img src="https://www.pikpng.com/pngl/m/83-835470_stars-sticker-galaxy-and-stars-png-clipart.png" alt="Galaxy" class="card-logo">
-                        <div class="card-title">Your Name</div>
+                    <div class="card" data-mirror="developer">
+                        <img src="png/developer-avatar.png" alt="Developer Avatar" class="card-logo">
+                        <div class="card-title">Project Maintainer</div>
                     </div>
                 </div>
             </section>
-
-            <a href="https://your-nexus-domain.com/" class="back-link">← Back to Nexus Repository Manager</a>
-
+            <a href="https://nexus.example.com/" class="back-link">← Back to Repository Manager</a>
             <div class="small-bat">
-                <img src="https://img1.picmix.com/output/stamp/normal/6/7/2/1/2441276_50f41.gif" alt="Bat" title="Bat by YourName">
+                <img src="gif/bat.gif" alt="Bat Animation" title="Animated Bat">
             </div>
         </div>
-
         <div class="right-panel" id="rightPanel">
             <span class="panel-close" id="panelClose">×</span>
             <img id="detailLogo" class="detail-logo" alt="">
@@ -495,50 +480,265 @@
             <div class="detail-content" id="detailDescription"></div>
         </div>
     </div>
-
+    <!-- Outlined success toast -->
+    <div id="toast">
+        <div class="toast-check">✓</div>
+        Copied to clipboard!
+    </div>
     <script>
-        const baseUrl = location.protocol + '//' + location.host;
-
+        // This is a demo implementation
+        // In production, replace with your actual configuration
+        const baseUrl = 'https://your-domain.com'; // Replace with your actual domain
         const mirrors = {
-            // ... (same as before, but replace real URLs with placeholders if needed)
-            // For GitHub, you can keep the structure and replace baseUrl dynamically
-            // Example:
             composer: {
                 title: "Composer Mirror",
                 url: baseUrl + "/repository/composer-proxy/",
-                logo: "https://cdn.simpleicons.org/composer/885630",
-                description: `...` // keep your existing descriptions
+                logo: "svg/composer-logo.svg",
+                description: `<hr class="repo-separator"><p>Proxy for Composer packages (PHP).</p>
+                <p>Add to your composer.json:</p>
+                <div class="code-block">
+                <pre><code>{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "${baseUrl}/repository/composer-proxy/"
+    }
+  ]
+}</code></pre>
+                <div class="copy-block-wrapper">
+                <button class="copy-btn">Copy ↑</button>
+                </div>
+                </div>`
             },
-            // Add the rest of your mirrors here (same as your final version)
-            // ...
-            maintainer: {
-                title: "Your Name",
+            maven: {
+                title: "Maven Mirror",
+                url: baseUrl + "/repository/maven-public-repo/",
+                logo: "svg/maven-logo.svg",
+                description: `<hr class="repo-separator"><p>Group mirror including Maven Central, releases, and snapshots.</p>
+                <p>Add to ~/.m2/settings.xml:</p>
+                <div class="code-block">
+                <pre><code>&lt;mirrors&gt;
+  &lt;mirror&gt;
+    &lt;id&gt;nexus-mirror&lt;/id&gt;
+    &lt;url&gt;${baseUrl}/repository/maven-public-repo/&lt;/url&gt;
+    &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;
+  &lt;/mirror&gt;
+&lt;/mirrors&gt;</code></pre>
+                <div class="copy-block-wrapper">
+                <button class="copy-btn">Copy ↑</button>
+                </div>
+                </div>`
+            },
+            npm: {
+                title: "NPM Mirror",
+                url: baseUrl + "/repository/npm-group-repo/",
+                logo: "svg/npm-logo.svg",
+                description: `<hr class="repo-separator"><p>Group proxy for the NPM registry.</p>
+                <div class="code-block">
+                <pre><code>npm config set registry ${baseUrl}/repository/npm-group-repo/</code></pre>
+                <div class="copy-block-wrapper">
+                <button class="copy-btn">Copy ↑</button>
+                </div>
+                </div>`
+            },
+            nuget: {
+                title: "NuGet Mirror",
+                url: baseUrl + "/repository/nuget-group-repo/index.json",
+                logo: "svg/nuget-logo.svg",
+                description: `<hr class="repo-separator"><p>Group proxy for NuGet packages.</p>
+                <div class="code-block">
+                <pre><code>dotnet nuget add source ${baseUrl}/repository/nuget-group-repo/index.json --name nuget-mirror</code></pre>
+                <div class="copy-block-wrapper">
+                <button class="copy-btn">Copy ↑</button>
+                </div>
+                </div>`
+            },
+            pypi: {
+                title: "PyPI Mirror",
+                url: baseUrl + "/repository/pypi-proxy/simple",
+                logo: "svg/pypi-logo.svg",
+                description: `<hr class="repo-separator"><p>Proxy for PyPI (use /simple endpoint).</p>
+                <p>Temporary install:</p>
+                <div class="code-block">
+                <pre><code>pip install -i ${baseUrl}/repository/pypi-proxy/simple package-name</code></pre>
+                <div class="copy-block-wrapper">
+                <button class="copy-btn">Copy ↑</button>
+                </div>
+                </div>
+                <p>Permanent (pip.conf):</p>
+                <div class="code-block">
+                <pre><code>[global]
+index-url = ${baseUrl}/repository/pypi-proxy/simple</code></pre>
+                <div class="copy-block-wrapper">
+                <button class="copy-btn">Copy ↑</button>
+                </div>
+                </div>`
+            },
+            docker: {
+                title: "Docker Mirror",
+                url: "https://docker-registry.example.com",
+                logo: "svg/docker-logo.svg",
+                description: `<hr class="repo-separator"><p>Group proxy for Docker Hub images.</p>
+                <p>To configure as a registry mirror:</p>
+                <div class="code-block">
+                <pre><code>{
+  "registry-mirrors": [
+    "https://docker-registry.example.com/"
+  ]
+}</code></pre>
+                <div class="copy-block-wrapper">
+                <button class="copy-btn">Copy ↑</button>
+                </div>
+                </div>
+                <p>Add the above to /etc/docker/daemon.json</p>`
+            },
+            alpine: {
+                title: "Alpine Linux Mirror",
+                url: baseUrl + "/repository/alpine-group/",
+                logo: "svg/alpine-logo.svg",
+                description: `<hr class="repo-separator"><p>Various Alpine versions and branches available.</p>
+                <p>Example /etc/apk/repositories:</p>
+                <div class="code-block">
+                <pre><code>${baseUrl}/repository/alpine-latest-stable-main/
+${baseUrl}/repository/alpine-latest-stable-community/
+${baseUrl}/repository/alpine-latest-stable-releases/</code></pre>
+                <div class="copy-block-wrapper">
+                <button class="copy-btn">Copy ↑</button>
+                </div>
+                </div>`
+            },
+            rocky: {
+                title: "Rocky Linux Mirror",
+                url: baseUrl + "/repository/rocky-baseos-proxy/",
+                logo: "svg/rocky-logo.svg",
+                description: `<hr class="repo-separator"><p>Multiple Rocky Linux components mirrored.</p>
+                <p>Example repository configuration:</p>
+                <div class="code-block">
+                <pre><code>[baseos]
+name=Rocky BaseOS
+baseurl=${baseUrl}/repository/rocky-baseos-proxy/
+enabled=1
+gpgcheck=0</code></pre>
+                <div class="copy-block-wrapper">
+                <button class="copy-btn">Copy ↑</button>
+                </div>
+                </div>`
+            },
+            ubuntu: {
+                title: "Ubuntu 24.04 Mirror",
+                url: baseUrl + "/repository/ubuntu-24.04/",
+                logo: "svg/ubuntu-logo.svg",
+                description: `<hr class="repo-separator"><p>Proxy mirror for Ubuntu 24.04 (Noble).</p>
+                <p>Example /etc/apt/sources.list:</p>
+                <div class="code-block">
+                <pre><code>deb ${baseUrl}/repository/ubuntu-24.04/ noble main restricted universe multiverse
+deb ${baseUrl}/repository/ubuntu-24.04/ noble-updates main restricted universe multiverse</code></pre>
+                <div class="copy-block-wrapper">
+                <button class="copy-btn">Copy ↑</button>
+                </div>
+                </div>`
+            },
+            developer: {
+                title: "Project Maintainer",
                 url: "",
-                logo: "https://www.pikpng.com/pngl/m/83-835470_stars-sticker-galaxy-and-stars-png-clipart.png",
+                logo: "png/developer-avatar.png",
                 description: `<div style="text-align:left;">
                   <p class="contributor-role">DevOps Engineer & Maintainer</p>
                   <hr class="contributor-separator">
                   <div class="contributor-links">
                     <div class="link-item">
-                      <img src="https://cdn.simpleicons.org/github/ff9f1c" alt="GitHub" class="link-icon">
-                      <a href="https://github.com/YOURUSERNAME" target="_blank">YOURUSERNAME</a>
+                      <img src="svg/github-logo.svg" alt="GitHub" class="link-icon">
+                      <a href="https://github.com/your-username" target="_blank">GitHub Profile</a>
                     </div>
                     <div class="link-item">
-                      <img src="https://cdn.simpleicons.org/telegram/ff9f1c" alt="Telegram" class="link-icon">
-                      <a href="https://t.me/YOURTELEGRAM" target="_blank">@YOURTELEGRAM</a>
+                      <img src="svg/linkedin-logo.svg" alt="LinkedIn" class="link-icon">
+                      <a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn Profile</a>
                     </div>
                     <div class="link-item">
-                      <img src="https://cdn.simpleicons.org/gmail/ff9f1c" alt="Email" class="link-icon">
-                      <a href="mailto:your.email@example.com">your.email@example.com</a>
+                      <img src="svg/email-logo.svg" alt="Email" class="link-icon">
+                      <a href="mailto:you@example.com">Contact Email</a>
                     </div>
                   </div>
                 </div>`
             }
         };
-
-        // Rest of the script remains the same as your final version
-        // (I kept it short here for brevity — copy the full script from your previous version)
-
+        
+        // UI functionality
+        let selectedCard = null;
+        let theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.dataset.theme = theme;
+        updateThemeIcon();
+        
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            theme = theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.dataset.theme = theme;
+            localStorage.setItem('theme', theme);
+            updateThemeIcon();
+        });
+        
+        function updateThemeIcon() {
+            document.getElementById('themeToggle').innerText = theme === 'dark' ? '☀️' : '🌙';
+        }
+        
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                if (selectedCard) selectedCard.classList.remove('active');
+                card.classList.add('active');
+                selectedCard = card;
+                const id = card.dataset.mirror;
+                const data = mirrors[id];
+                document.getElementById('detailLogo').src = data.logo;
+                document.getElementById('detailLogo').style.maxWidth = (id === 'developer' ? '50%' : '60%');
+                document.getElementById('detailTitle').textContent = data.title;
+                document.getElementById('detailUrl').textContent = data.url;
+                document.querySelector('.detail-url-wrapper').style.display = data.url ? 'block' : 'none';
+                document.getElementById('detailDescription').innerHTML = data.description;
+                document.getElementById('rightPanel').style.display = 'block';
+            });
+        });
+        
+        document.getElementById('panelClose').addEventListener('click', () => {
+            document.getElementById('rightPanel').style.display = 'none';
+            if (selectedCard) {
+                selectedCard.classList.remove('active');
+                selectedCard = null;
+            }
+        });
+        
+        document.getElementById('copyUrlBtn').addEventListener('click', () => {
+            copyToClipboard(document.getElementById('detailUrl').textContent);
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('copy-btn')) {
+                const code = e.target.closest('.copy-block-wrapper').previousElementSibling.querySelector('code');
+                if (code) copyToClipboard(code.innerText);
+            }
+        });
+        
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast();
+            }).catch(() => {
+                // fallback silent
+            });
+        }
+        
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            document.querySelectorAll('.card').forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                card.style.display = title.includes(query) ? 'flex' : 'none';
+            });
+        });
     </script>
 </body>
 </html>
